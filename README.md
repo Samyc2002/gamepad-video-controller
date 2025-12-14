@@ -25,10 +25,7 @@ Works with:
 ## Installation
 
 ```bash
-git clone https://github.com/Samyc2002/gamepad-video-controller.git
-cd gamepad-video-controller
-pip install -r requirements.txt
-pip install -e .
+pip install gamepad-video-controller
 gamepad-video-controller
 ```
 
