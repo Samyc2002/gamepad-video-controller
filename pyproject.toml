@@ -1,0 +1,15 @@
+[project]
+name = "gamepad-video-controller"
+version = "0.1.0"
+description = "Control video players and browsers using a gamepad"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Samriddha Chattopadhyay" }]
+dependencies = [
+ "pygame>=2.6.1",
+ "pynput>=1.8.1",
+]
+
+[project.scripts]
+gamepad-video-controller = "gamepad_video_controller.main:main"
