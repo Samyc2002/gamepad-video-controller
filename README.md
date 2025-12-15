@@ -2,6 +2,8 @@
 
 Control media players and browsers using a gamepad.
 
+![Demo](./gamepad-video-controller-demo.gif)
+
 Works with:
 - VLC
 - YouTube (Chrome / Firefox / Edge)

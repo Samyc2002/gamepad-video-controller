@@ -1,6 +1,6 @@
 [project]
 name = "gamepad-video-controller"
-version = "0.1.0"
+version = "0.1.1"
 description = "Control video players and browsers using a gamepad"
 readme = "README.md"
 requires-python = ">=3.11"
