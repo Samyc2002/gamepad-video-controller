@@ -10,19 +10,38 @@ Works with:
 - Most desktop video players
 - Any app that responds to keyboard shortcuts
 
+---
+
 ## Features
+
+### Media Controls
 - Play / Pause
 - Fullscreen toggle
 - Seek forward / backward
-- Volume control
-- Browser tab switching
-- Window switching
-- Scroll using left joystick
+- Volume up / down
+- Mute / captions (player dependent)
+
+### Browser & Window Controls
+- Next / previous browser tab
+- Reload current tab
+- Switch between windows
+- Scroll vertically and horizontally using the left joystick
+
+### System Integration
+- Runs in the background
+- Windows system tray icon
+- One-click enable / disable toggle
+- Optional auto-start on Windows login
+
+---
 
 ## Requirements
+
 - Windows
 - Python 3.9+
-- Xbox / XInput-compatible controller
+- Xbox / XInput-compatible controller (other controllers may work but are untested)
+
+---
 
 ## Installation
 
@@ -31,14 +50,28 @@ pip install gamepad-video-controller
 gamepad-video-controller
 ```
 
-Focus your media player window and use the controller.
+Once running, the app will appear in the Windows system tray.
 
-## Notes
+Focus your media player or browser window and use the controller.
 
-- Button mappings may vary by controller
+---
+
+## Usage Notes
+
+- Button and axis mappings may vary by controller and driver
 - Tested primarily with Xbox controllers on Windows
 - DRM-heavy apps may limit some controls
+- No custom configuration UI yet (planned)
+
+---
+
+## Autostart
+
+You can enable Start with Windows directly from the system tray menu.
+This uses the standard Windows per-user startup registry and does not require admin privileges.
+
+---
 
 ## License
 
-MIT
+[MIT](./LICENSE)

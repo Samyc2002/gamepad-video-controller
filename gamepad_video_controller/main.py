@@ -1,7 +1,9 @@
 import pygame
 import time
+import threading
 from pynput.keyboard import Controller, Key
 from pynput.mouse import Controller as MouseController
+from gamepad_video_controller import tray
 
 BUTTON_A = 0
 BUTTON_B = 1
@@ -9,7 +11,7 @@ BUTTON_X = 2
 BUTTON_Y = 3
 BUTTON_L1 = 4
 BUTTON_R1 = 5
-BUTTON_L2 = 2
+BUTTON_L2 = 4
 BUTTON_R2 = 5
 BUTTON_R3 = 9
 
@@ -22,9 +24,13 @@ LEFT_X_AXIS = 0
 LEFT_Y_AXIS = 1
 
 last_time = 0
+enabled = True
+l2_hold_start = None
 DELAY = 0.2
 DEADZONE = 0.2
 SCROLL_SPEED = 1.5
+TRIGGER_THRESHOLD = 0.5
+HOLD_TIME = 5.0
 
 
 def trigger():
@@ -51,7 +57,33 @@ def main():
 
     print("Controller media control active")
 
+    def toggle_on_off():
+        global l2_hold_start
+
+        current_time = time.time()
+        # On/Off Switch
+        if joy.get_axis(BUTTON_L2) > -TRIGGER_THRESHOLD:
+            if l2_hold_start is None:
+                l2_hold_start = current_time
+            elif current_time - l2_hold_start >= HOLD_TIME:
+                tray.enabled = not tray.enabled
+                print(
+                    f"Gamepad Video control {'enabled' if tray.enabled else 'disabled'}"
+                )
+                l2_hold_start = None
+        else:
+            l2_hold_start = None
+
+    tray_thread = threading.Thread(target=tray.run_tray, daemon=True)
+    tray_thread.start()
+
     while True:
+        if not tray.enabled:
+            toggle_on_off()
+            continue
+
+        toggle_on_off()
+
         pygame.event.pump()
 
         # Play/Pause
@@ -98,7 +130,7 @@ def main():
             keyboard.release(Key.ctrl)
 
         # Next window
-        if joy.get_axis(BUTTON_R2) > 0.5 and trigger():
+        if joy.get_axis(BUTTON_R2) > TRIGGER_THRESHOLD and trigger():
             keyboard.press(Key.alt)
             keyboard.press(Key.shift)
             keyboard.press(Key.tab)
