@@ -10,8 +10,6 @@ Works with:
 - Most desktop video players
 - Any app that responds to keyboard shortcuts
 
----
-
 ## Features
 
 ### Media Controls
@@ -33,15 +31,11 @@ Works with:
 - One-click enable / disable toggle
 - Optional auto-start on Windows login
 
----
-
 ## Requirements
 
 - Windows
 - Python 3.9+
 - Xbox / XInput-compatible controller (other controllers may work but are untested)
-
----
 
 ## Installation
 
@@ -54,8 +48,6 @@ Once running, the app will appear in the Windows system tray.
 
 Focus your media player or browser window and use the controller.
 
----
-
 ## Usage Notes
 
 - Button and axis mappings may vary by controller and driver
@@ -63,14 +55,10 @@ Focus your media player or browser window and use the controller.
 - DRM-heavy apps may limit some controls
 - No custom configuration UI yet (planned)
 
----
-
 ## Autostart
 
 You can enable Start with Windows directly from the system tray menu.
 This uses the standard Windows per-user startup registry and does not require admin privileges.
-
----
 
 ## License
 
