@@ -9,12 +9,17 @@ enabled = True
 
 def create_icon():
     """Create a simple tray icon dynamically."""
-    with (
-        resources.files("gamepad_video_controller.assets")
-        .joinpath("icon.png")
-        .open("rb") as f
-    ):
-        return Image.open(f).convert("RGBA")
+    try:
+        with (
+            resources.files("gamepad_video_controller.assets")
+            .joinpath("icon.png")
+            .open("rb") as f
+        ):
+            return Image.open(f).convert("RGBA")
+    except Exception as e:
+        print(f"[Tray] Failed to load icon: {e}")
+        # Fallback: simple blank icon
+        return Image.new("RGBA", (64, 64), (0, 0, 0, 255))
 
 
 def toggle_enabled(icon, item):

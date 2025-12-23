@@ -18,3 +18,9 @@ gamepad-video-controller = "gamepad_video_controller.main:main"
 
 [tool.isort]
 honor_noqa = true
+
+[tool.setuptools.packages.find]
+include = ["gamepad_video_controller*"]
+
+[tool.setuptools.package-data]
+gamepad_video_controller = ["assets/*.png"]
