@@ -1,3 +1,8 @@
+# fmt: off
+import os
+os.environ["PYGAME_HIDE_SUPPORT_PROMPT"] = "True"
+# fmt: on
+
 import pygame
 import time
 import threading
@@ -55,7 +60,11 @@ def main():
     joy = pygame.joystick.Joystick(0)
     joy.init()
 
+    controller_name = joy.get_name()
+
     print("Controller media control active")
+    print("🎮 Controller connected")
+    print(f"   Name : {controller_name}")
 
     def toggle_on_off():
         global l2_hold_start

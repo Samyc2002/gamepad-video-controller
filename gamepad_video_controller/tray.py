@@ -1,7 +1,7 @@
 from pystray import Icon, Menu, MenuItem
 from PIL import Image
 from importlib import resources
-from gamepad_video_controller import autostart
+from gamepad_video_controller import autostart, help_dialog
 
 # Shared state (imported by main)
 enabled = True
@@ -37,6 +37,10 @@ def toggle_autostart(icon, item):
     icon.update_menu()
 
 
+def show_help(icon, item):
+    help_dialog.show_keybinds()
+
+
 def build_menu():
     return Menu(
         MenuItem(
@@ -49,6 +53,8 @@ def build_menu():
             else "Start with Windows ✗",
             toggle_autostart,
         ),
+        Menu.SEPARATOR,
+        MenuItem("Help / Keybinds", show_help),
         Menu.SEPARATOR,
         MenuItem("Quit", quit_app),
     )
