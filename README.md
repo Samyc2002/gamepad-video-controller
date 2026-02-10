@@ -2,7 +2,7 @@
 
 Control media players and browsers using a gamepad.
 
-![Demo](https://github.com/Samyc2002/gamepad-video-controller/blob/main/gamepad-video-controller-demo.gif)
+![Demo](gamepad-video-controller-demo.gif)
 
 Works with:
 - VLC
